@@ -1,7 +1,14 @@
 import numpy as np
-from deserializer import grid, word_bank
 
-def test_row(grid, row_no):
+'''
+    For all testers in this file,
+    tester returns False if it sees repeat
+    True otherwise
+'''
+
+from deserializer import grid
+
+def row_no_rep(grid, row_no):
     '''
     determine if grid has repeat letter on row "row_no"
     '''
@@ -15,7 +22,7 @@ def test_row(grid, row_no):
                 seen.add(letter)
     return True
 
-def test_column(grid, column_no):
+def column_no_rep(grid, column_no):
     '''
     determine if grid has repeat letter on column "column_no"
     '''
@@ -29,7 +36,7 @@ def test_column(grid, column_no):
                 seen.add(letter)
     return True
 
-def test_submatrix(grid, nth_sub):
+def submatrix_no_rep(grid, nth_sub):
     '''
     determine if grid has repeat letter in submatrix "nth_sub"
     NOTE: nth_sub is ROW-prime
@@ -38,11 +45,19 @@ def test_submatrix(grid, nth_sub):
     row_idx = int(nth_sub / 3) * 3
     column_idx = int(nth_sub % 3) * 3
     sub_m = grid[row_idx:(row_idx+3), column_idx:(column_idx+3)]
-    print(sub_m)
+    seen = set()
+    for l in sub_m:
+        for c in l:
+            if c != "_":
+                if c in seen:
+                    return False
+                else:
+                    seen.add(c)
+    return True
 
 if __name__ == "__main__":
     print(grid)
-    test_submatrix(grid, 0)
-    test_submatrix(grid, 4)
-    test_submatrix(grid, 5)
-    test_submatrix(grid, 8)
+    for i in range(9):
+        assert row_no_rep(grid, i)
+        assert column_no_rep(grid, i)
+        assert submatrix_no_rep(grid, i)
