@@ -22,7 +22,7 @@ def get_ordered_domain_value(solution_set):
     '''
     return []
 
-def can_assign_color_at(color, location):
+def can_assign_color_at(color, location, solution_set):
     '''
     :return: true if can assign color at location
     '''
@@ -34,7 +34,7 @@ def csp(solution_set):
         return solution_set
     next_to_assign = get_next_location_to_assign(solution_set)
     for color in get_ordered_domain_value(solution_set):
-        if can_assign_color_at(color, next_to_assign):
+        if can_assign_color_at(color, next_to_assign, solution_set):
             solution_set[next_to_assign] = (
                 color,
                 False # not a source
