@@ -1,5 +1,5 @@
 
-filename = "assets/input77.txt"
+filename = "assets/input88.txt"
 
 init_state = {}
 

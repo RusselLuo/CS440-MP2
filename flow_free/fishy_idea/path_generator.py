@@ -2,7 +2,7 @@
 idea: can we generate all paths and select the set of paths to take?
 '''
 
-height, width = 7, 7
+height, width = 8, 8
 
 def get_four_neighbors(location):
     x, y = location
