@@ -16,12 +16,13 @@ Any attempt to directly write to end points location will FAIL
 '''
 from parse_txt import start_points, end_points, state
 from utils import get_four_neighbors, get_num_neighbors_of_color
-height, width = 5, 5
+height, width = 4, 4
 
 print(start_points)
 print(end_points)
 
 temp_color_list = end_points.values()
+# temp_color_list = ['R', 'B', 'O', 'Y', 'G']
 temp_color_set = set(temp_color_list)
 print(temp_color_list)
 
@@ -87,12 +88,12 @@ def csp(solution_set):
     return None # mark failure
 
 def csp_trial(solution_set, color_set):
-    print(solution_set)
+    # print(solution_set)
     if len(color_set) == 0:
         return solution_set
     for next_to_assign in get_next_location_to_assign(solution_set):
         for color in color_set:
-            print("TRYING TO PUT " + color + " IN " + str(next_to_assign))
+            # print("TRYING TO PUT " + color + " IN " + str(next_to_assign))
             if can_assign_color_at(color, next_to_assign, solution_set):
                 solution_set[next_to_assign] = color
                 if next_to_assign in end_area[color]:

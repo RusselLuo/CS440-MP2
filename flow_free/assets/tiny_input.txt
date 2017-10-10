@@ -1,3 +1,4 @@
-B_Y_Y
-_B_RG
-R__G_
+B__R
+___Y
+__YG
+BRG_
