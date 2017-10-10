@@ -73,19 +73,19 @@ def can_assign_color_at(color, location, solution_set):
     count = get_num_neighbors_of_color(location, color, solution_set, height, width)
     return count == 1
 
-def csp(solution_set):
-    print(solution_set)
-    if is_goal_state(solution_set):
-        return solution_set
-    for next_to_assign in get_next_location_to_assign(solution_set):
-        for color in get_ordered_domain_value(next_to_assign, solution_set):
-            if can_assign_color_at(color, next_to_assign, solution_set):
-                solution_set[next_to_assign] = color
-                rec_result = csp(solution_set)
-                if rec_result != None:
-                    return rec_result
-                solution_set.pop(next_to_assign) # reset
-    return None # mark failure
+# def csp(solution_set):
+#     print(solution_set)
+#     if is_goal_state(solution_set):
+#         return solution_set
+#     for next_to_assign in get_next_location_to_assign(solution_set):
+#         for color in get_ordered_domain_value(next_to_assign, solution_set):
+#             if can_assign_color_at(color, next_to_assign, solution_set):
+#                 solution_set[next_to_assign] = color
+#                 rec_result = csp(solution_set)
+#                 if rec_result != None:
+#                     return rec_result
+#                 solution_set.pop(next_to_assign) # reset
+#     return None # mark failure
 
 def csp_trial(solution_set, color_set):
     # print(solution_set)
