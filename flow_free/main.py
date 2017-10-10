@@ -16,7 +16,7 @@ Any attempt to directly write to end points location will FAIL
 '''
 from parse_txt import start_points, end_points, state
 from utils import get_four_neighbors, get_num_neighbors_of_color
-height, width = 4, 4
+height, width = 5, 5
 
 print(start_points)
 print(end_points)
@@ -48,8 +48,8 @@ def get_next_location_to_assign(solution_set):
     keep expanding
     :return: a 2-D tuple (row, column)
     '''
-    for row in range(height):
-        for column in range(width):
+    for column in range(width):
+        for row in range(height):
             if (row, column) not in solution_set:
                 yield (row, column)
 
